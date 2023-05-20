@@ -1,6 +1,6 @@
 <?php 
 
-define('BASEURL', 'http://localhost/phpmvc/public');
+define('BASEURL', 'http://localhost/SkillHub/public');
 
 // DB
 define('DB_HOST', "localhost");

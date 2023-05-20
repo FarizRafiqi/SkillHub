@@ -18,7 +18,7 @@ class App{
             jika ada maka jalankan perintah dibawah ini, namun jika tidak ada
             maka jalankan controller default yaitu index
         */
-        if(file_exists('../app/controllers/'  . $url[0] . '.php') ){
+        if(isset($url[0]) && file_exists('../app/controllers/'  . $url[0] . '.php') ){
             // jika ada maka property controller di assign dgn controller dari array
             $this->controller = $url[0];
             // stlh itu hilangkan controller dari array nya
