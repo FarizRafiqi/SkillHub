@@ -1,26 +1,34 @@
-<?php 
- 
+<?php
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Halaman <?= $data['judul']; ?></title>
-    <link rel="stylesheet" href="<?= BASEURL; ?>/css/bootstrap.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Halaman <?= $data['judul']; ?></title>
+  <link rel="stylesheet" href="<?= BASEURL; ?>/css/style.css">
 </head>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar">
   <div class="container">
-    <a class="navbar-brand" href="<?= BASEURL; ?>">PHP MVC</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-        <a class="nav-item nav-link" href="<?= BASEURL; ?>">Home <span class="sr-only"></span></a>
-        <a class="nav-item nav-link" href="<?= BASEURL; ?>/mahasiswa">Mahasiswa</a>
-        <a class="nav-item nav-link" href="<?= BASEURL; ?>/about">About</a>
-        </div>
+    <div class="navbar-menu">
+      <a href="#" class="navbar-brand">
+        <img src="<?= BASEURL; ?>/img/Logo_SkillHub.png" alt="" width="113px" height="23px"
+      </a>
+      <a href="#" class="navbar-menu-item">
+        <span class="navbar-menu-link  text-sm active">Home</span>
+      </a>
+      <a href="#" class="navbar-menu-item">
+        <span class="navbar-menu-link text-sm">E-learning</span>
+      </a>
+    </div>
+    <div class="navbar-menu">
+      <a href="#" class="navbar-menu-item">
+        <span class="navbar-menu-link button primary-button">Login</span>
+      </a>
+      <a href="#" class="navbar-menu-item">
+        <span class="navbar-menu-link button outline-button">Register</span>
+      </a>
     </div>
   </div>
 </nav>
