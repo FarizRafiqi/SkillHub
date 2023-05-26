@@ -172,8 +172,11 @@ a {
 }
 
 .outline-button:hover {
-    background-color: #a148d9;
     color: #fff;
+}
+
+.outline-button-secondary:hover {
+    background-color: #D27685 !important;
 }
 
 .outline-button:focus {

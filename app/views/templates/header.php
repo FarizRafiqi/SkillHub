@@ -27,7 +27,7 @@
         <span class="navbar-menu-link button primary-button">Login</span>
       </a>
       <a href="#" class="navbar-menu-item">
-        <span class="navbar-menu-link button outline-button">Register</span>
+        <span class="navbar-menu-link button outline-button outline-button-secondary">Register</span>
       </a>
     </div>
   </div>

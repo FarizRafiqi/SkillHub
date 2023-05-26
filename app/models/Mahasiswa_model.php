@@ -23,6 +23,7 @@ class Mahasiswa_model{
         $query = "INSERT INTO mahasiswa
                     VALUES
                  ('', :nama, :nrp, :email, :jurusan)";
+
         $this->db->query($query);
         $this->db->bind('nama', $data['nama']);  
         $this->db->bind('nrp', $data['nrp']);  
