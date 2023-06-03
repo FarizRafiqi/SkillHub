@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container home-container">
   <div class="jumbotron row">
     <div class="col col-4">
       <img src="<?= BASEURL ?>/img/e-learning-skillhub.png" alt="E-Learning SkillHub" width="400px">
@@ -11,7 +11,7 @@
         Temukan potensi diri dan raih kesuksesan dengan SkillHub! Kurikulum terbaik, pengajar berpengalaman, dan
         komunitas inspiratif menanti. Tingkatkan pengetahuanmu dan buka pintu peluang baru di sini!
       </p>
-      <button class="button primary-button text-sm mt-4">
+      <button class="btn btn-primary bg-primary text-sm mt-4">
         Belajar Sekarang
       </button>
     </div>
@@ -37,7 +37,7 @@
           </p>
         </div>
         <div class="card-footer">
-          <button class="button primary-button text-sm">Tambah Ke Keranjang</button>
+          <button class="btn primary-button text-sm">Tambah Ke Keranjang</button>
         </div>
       </div>
     </div>

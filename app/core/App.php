@@ -49,12 +49,29 @@ class App{
         call_user_func_array([$this->controller, $this->method], $this->params);
     }
 
-    public function parseURL(){
+    public static function parseURL(): ?array
+    {
         if(isset($_GET['url'])){
             $url = rtrim($_GET['url'], '/');
             $url = filter_var($url, FILTER_SANITIZE_URL);
             $url = explode('/', $url);
             return $url;
         }
+
+        return null;
+    }
+
+    public static function getParams(): ?array
+    {
+        $url = App::parseUrl();
+
+        // Menghapus elemen pertama dari $url karena itu merupakan nama controller
+        array_shift($url);
+
+        // Menghapus elemen kedua dari $url karena itu merupakan nama method
+        array_shift($url);
+
+        // Mengembalikan sisa elemen $url sebagai parameter
+        return $url;
     }
 }

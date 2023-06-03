@@ -9,6 +9,7 @@
   <title>Halaman <?= $data['judul']; ?></title>
   <link rel="stylesheet" href="<?= BASEURL; ?>/css/style.css">
 </head>
+<body>
 <nav class="navbar">
   <div class="container">
     <div class="navbar-menu">
@@ -24,12 +25,11 @@
     </div>
     <div class="navbar-menu">
       <a href="#" class="navbar-menu-item">
-        <span class="navbar-menu-link button primary-button">Login</span>
+        <span class="navbar-menu-link btn primary-button">Login</span>
       </a>
       <a href="#" class="navbar-menu-item">
-        <span class="navbar-menu-link button outline-button outline-button-secondary">Register</span>
+        <span class="navbar-menu-link btn outline-button outline-button-secondary">Register</span>
       </a>
     </div>
   </div>
 </nav>
-<body>

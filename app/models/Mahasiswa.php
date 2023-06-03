@@ -1,6 +1,9 @@
 <?php 
+namespace app\models;
 
-class Mahasiswa_model{
+use Database;
+
+class Mahasiswa_{
     private $table = "mahasiswa",
             $db;
     
