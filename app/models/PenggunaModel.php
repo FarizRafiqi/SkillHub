@@ -28,6 +28,7 @@ class PenggunaModel
             FROM $this->table, peran
             WHERE $this->table.id_peran = peran.id AND $this->table.id=:id
         SQL;
+
         $this->db->query($sql);
         $this->db->bind('id', $id);
         return $this->db->single();
@@ -69,16 +70,21 @@ class PenggunaModel
             UPDATE $this->table SET
                 id_peran = :id_peran,
                 nama = :nama,
-                email = :email,
-                password = :password
-            WHERE id = :id
+                email = :email
         SQL;
+
+        // Bind password hanya jika ada kunci 'password' dalam $data
+        if (isset($data['password'])) {
+            $query .= ", password = :password";
+        }
+
+        $query .= " WHERE id = :id";
 
         $this->db->query($query);
 
         $this->db->bind('id_peran', $data['id_peran']);
         $this->db->bind('nama', $data['nama']);
-        $this->db->bind('email', $data['email']);;
+        $this->db->bind('email', $data['email']);
         $this->db->bind('id', $data['id']);
 
         // Bind password hanya jika ada kunci 'password' dalam $data
