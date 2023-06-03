@@ -5,7 +5,7 @@ class App{
         Disini terjadi proses Routing,
         yaitu proses menentukan controller dan method yang dibutuhkan
     */
-    protected $controller = 'Home';
+    protected $controller = 'Dashboard';
     protected $method = 'index';
     protected $params = [];
 
