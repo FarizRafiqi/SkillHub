@@ -1,0 +1,90 @@
+<?php
+
+class Peran extends Controller
+{
+    public function index()
+    {
+        $data["judul"] = "Daftar Peran";
+        $data["peran"] = $this->model("PeranModel")->all();
+
+        $data["current_route"] = $this->currentRoute();
+        $this->view("admin_panel.peran.index", $data, "templates.layout_admin");
+    }
+
+    public function create()
+    {
+        $data["judul"] = "Tambah Peran";
+        $data["current_route"] = $this->currentRoute();
+
+        $data['errors'] = $_SESSION['errors'] ?? null;
+        unset($_SESSION['errors']);
+
+        $this->view("admin_panel.peran.create", $data, "templates.layout_admin");
+    }
+
+    public function store()
+    {
+        $errors = $this->request("PeranRequest")->validate($_POST);
+
+        if (!empty($errors)) {
+            Flasher::setFlash("Data peran gagal ditambahkan.", "danger");
+
+            $this->withErrors($errors);
+            redirect("peran/create");
+        }
+
+        if ($this->model("PeranModel")->create($_POST) > 0) {
+            Flasher::setFlash("Data peran berhasil ditambahkan", "success");
+            redirect("peran/index");
+        }
+    }
+
+    public function edit($id)
+    {
+        $data["judul"] = "Ubah Peran";
+
+        $data["peran"] = $this->model("PeranModel")->find($id);
+        $data["current_route"] = $this->currentRoute();
+
+        $data['errors'] = $_SESSION['errors'] ?? null;
+        unset($_SESSION['errors']);
+
+        $this->view("admin_panel.peran.edit", $data, "templates.layout_admin");
+    }
+
+    public function update()
+    {
+        $errors = $this->request("PeranRequest")->validate($_POST);
+
+        if (!empty($errors)) {
+            Flasher::setFlash("Data peran gagal diubah.", "danger");
+
+            $this->withErrors($errors);
+            back();
+        }
+
+        if ($this->model("PeranModel")->update($_POST) >= 0) {
+            Flasher::setFlash("Data peran berhasil diubah", "success");
+            redirect("peran/index");
+        }
+    }
+
+    public function destroy($id)
+    {
+        if ($this->model("PeranModel")->destroy($id) > 0) {
+            Flasher::setFlash("Data peran berhasil dihapus", "success");
+        } else {
+            Flasher::setFlash("Data peran gagal dihapus", "danger");
+        }
+
+        redirect("peran/index");
+    }
+
+    public function search()
+    {
+        $data["judul"] = "Daftar Peran";
+        $data["peran"] = $this->model("PeranModel")->search($_POST['keyword']);
+        $data["current_route"] = $this->currentRoute();
+        $this->view("admin_panel.peran.index", $data, "templates.layout_admin");
+    }
+}

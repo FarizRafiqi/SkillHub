@@ -14,12 +14,23 @@ function redirect($url)
     exit();
 }
 
-function back() {
+function back()
+{
     $referer = $_SERVER['HTTP_REFERER'] ?? BASEURL . "/dashboard";
     header("Location: $referer");
     exit();
 }
 
-function isAlpha($str) {
+function isAlpha($str)
+{
     return preg_match('/^[a-zA-Z\s]+$/', $str) === 1;
+}
+
+function abort_if($condition, $httpCode, $message = '')
+{
+    if ($condition) {
+        http_response_code($httpCode);
+        echo $message;
+        exit();
+    }
 }

@@ -56,4 +56,15 @@ $(function(){
             window.location.href = url + "/" + id;
         }
     });
+
+    $(".btn-logout").on("click", function(e) {
+        e.preventDefault();
+        
+        let url = $(this).attr("href");
+        console.log(url);
+
+        if (confirm("Apakah Anda yakin ingin logout?")) {
+            // window.location.href = url;
+        }
+    });
 });

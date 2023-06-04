@@ -38,7 +38,7 @@ class PenggunaModel
     {
         $query = <<<SQL
             INSERT INTO $this->table VALUES (
-                '', :id_peran, :nama, :email, :password
+                '', :id_peran, :nama, :email, :password, :is_login
             )
         SQL;
 
@@ -47,6 +47,7 @@ class PenggunaModel
         $this->db->bind('nama', $data['nama']);
         $this->db->bind('email', $data['email']);
         $this->db->bind('password', $data['password']);
+        $this->db->bind('is_login', 0);
 
         $this->db->execute();
 
@@ -71,21 +72,28 @@ class PenggunaModel
                 id_peran = :id_peran,
                 nama = :nama,
                 email = :email
-        SQL;
+            SQL;
 
         // Bind password hanya jika ada kunci 'password' dalam $data
         if (isset($data['password'])) {
             $query .= ", password = :password";
         }
 
+        if (isset($data['is_login'])) {
+            $query .= ", is_login = :is_login";
+        }
+
         $query .= " WHERE id = :id";
 
         $this->db->query($query);
-
+        $this->db->bind('id', $data['id']);
         $this->db->bind('id_peran', $data['id_peran']);
         $this->db->bind('nama', $data['nama']);
         $this->db->bind('email', $data['email']);
-        $this->db->bind('id', $data['id']);
+
+        if (isset($data['is_login'])) {
+            $this->db->bind('is_login', $data['is_login']);
+        }
 
         // Bind password hanya jika ada kunci 'password' dalam $data
         if (isset($data['password'])) {
@@ -109,5 +117,17 @@ class PenggunaModel
         $this->db->query($query);
         $this->db->bind('keyword', "%$keyword%");
         return $this->db->resultSet();
+    }
+
+    public function findByEmail($data)
+    {
+        $sql = <<<SQL
+            SELECT * FROM $this->table
+            WHERE email = :email
+        SQL;
+
+        $this->db->query($sql);
+        $this->db->bind('email', $data['email']);
+        return $this->db->single();
     }
 }

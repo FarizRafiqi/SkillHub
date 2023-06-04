@@ -1,15 +1,17 @@
 <?php
 
-class App{
+class App
+{
     /*
         Disini terjadi proses Routing,
         yaitu proses menentukan controller dan method yang dibutuhkan
     */
-    protected $controller = 'Dashboard';
+    protected $controller = 'Autentikasi';
     protected $method = 'index';
     protected $params = [];
 
-    public function __construct(){
+    public function __construct()
+    {
         // URL dipecah menjadi array
         $url = $this->parseURL();
         //controller
@@ -18,7 +20,7 @@ class App{
             jika ada maka jalankan perintah dibawah ini, namun jika tidak ada
             maka jalankan controller default yaitu index
         */
-        if(isset($url[0]) && file_exists('../app/controllers/'  . $url[0] . '.php') ){
+        if (isset($url[0]) && file_exists('../app/controllers/'  . $url[0] . '.php')) {
             // jika ada maka property controller di assign dgn controller dari array
             $this->controller = $url[0];
             // stlh itu hilangkan controller dari array nya
@@ -32,8 +34,8 @@ class App{
         // method
         // cek apakah index ke-1 yg merupakan method sudah di set apa belum
         // jika belum maka proses ini akan dilewatkan dan langsung memanggil method defaultnya
-        if(isset($url[1])){
-            if( method_exists($this->controller, $url[1]) ){
+        if (isset($url[1])) {
+            if (method_exists($this->controller, $url[1])) {
                 $this->method = $url[1];
                 unset($url[1]);
             }
@@ -41,7 +43,7 @@ class App{
 
         // params
         //cek apakah ada parameter atau tidak
-        if(!empty($url)){
+        if (!empty($url)) {
             $this->params = array_values($url);
         }
 
@@ -51,7 +53,7 @@ class App{
 
     public static function parseURL(): ?array
     {
-        if(isset($_GET['url'])){
+        if (isset($_GET['url'])) {
             $url = rtrim($_GET['url'], '/');
             $url = filter_var($url, FILTER_SANITIZE_URL);
             $url = explode('/', $url);
