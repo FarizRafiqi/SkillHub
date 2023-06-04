@@ -1,6 +1,6 @@
 <?php
 
-class Login extends Controller
+class Autentikasi extends Controller
 {
     public function index()
     {
@@ -25,16 +25,27 @@ class Login extends Controller
         }
 
         $result = $this->model("PenggunaModel")->findByEmail($_POST);
-        if ($result) {
-            $hashedPassword = $result['password'];
-            $inputPassword = $_POST['password'];
+        if (!$result) return;
 
-            if (password_verify($inputPassword, $hashedPassword)) {
-                redirect("dashboard");
-            } else {
-                Flasher::setFlash("Login gagal.", "danger");
-                back();
-            }
+        $hashedPassword = $result['password'];
+        $inputPassword = $_POST['password'];
+
+        if (password_verify($inputPassword, $hashedPassword)) {
+            $result['is_login'] = true;
+
+            $is_login = $this->model("PenggunaModel")->update($result);
+
+            $_SESSION['user'] = $result;
+            if ($is_login >= 0) redirect("dashboard");
+        } else {
+            Flasher::setFlash("Login gagal.", "danger");
+            back();
         }
+    }
+
+    public function logout()
+    {
+        unset($_SESSION['user']);
+        redirect("autentikasi/index");
     }
 }

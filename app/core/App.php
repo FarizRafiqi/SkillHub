@@ -6,7 +6,7 @@ class App
         Disini terjadi proses Routing,
         yaitu proses menentukan controller dan method yang dibutuhkan
     */
-    protected $controller = 'Login';
+    protected $controller = 'Autentikasi';
     protected $method = 'index';
     protected $params = [];
 

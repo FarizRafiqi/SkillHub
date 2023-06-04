@@ -1,9 +1,9 @@
 <div class="container container-sm" id="login">
-    <div class="card">
+    <div class="card shadow-lg">
         <div class="card-body">
             <h2 class="text-center">LOGIN</h2>
             <?php Flasher::flash(); ?>
-            <form action="<?= BASEURL; ?>/login/process" method="POST">
+            <form action="<?= BASEURL; ?>/autentikasi/process" method="POST">
                 <div class="mb-5">
                     <label for="email" class="form-label">Email</label>
                     <input type="text" class="form-control" name="email" id="email" placeholder="Masukkan Email">
