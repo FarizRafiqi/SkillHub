@@ -17,6 +17,8 @@ class Controller
         if (file_exists($viewPath) && (!$layout || file_exists($layoutPath))) {
             ob_start();
 
+            $data["current_route"] = $this->currentRoute();
+
             extract($data, EXTR_SKIP);
 
             try {

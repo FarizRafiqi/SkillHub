@@ -6,7 +6,6 @@ class Autentikasi extends Controller
     {
         $data = [
             "judul" => "Login",
-            "current_route" => $this->currentRoute(),
             "errors" => $_SESSION['errors'] ?? null,
         ];
 
