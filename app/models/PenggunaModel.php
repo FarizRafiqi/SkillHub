@@ -114,24 +114,12 @@ class PenggunaModel
     public function findByEmail($data)
     {
         $sql = <<<SQL
-            SELECT $this->table.*, pengguna.password AS password_pengguna 
-            FROM $this->table, pengguna
-            WHERE $this->table.email_pengguna = pengguna.email AND $this->table.id=:id
+            SELECT * FROM $this->table
+            WHERE email = :email
         SQL;
 
         $this->db->query($sql);
         $this->db->bind('email', $data['email']);
         return $this->db->single();
-
-        // if ($result) {
-        //     $hashedPassword = $result['password'];
-        //     $inputPassword = $data['password'];
-
-        //     if (password_verify($inputPassword, $hashedPassword)) {
-        //         return $result;
-        //     }
-        // }
-
-        // return false;
     }
 }
