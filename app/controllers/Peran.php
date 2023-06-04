@@ -4,6 +4,8 @@ class Peran extends Controller
 {
     public function index()
     {
+        $this->checkUserAccess();
+
         $data["judul"] = "Daftar Peran";
         $data["peran"] = $this->model("PeranModel")->all();
 
@@ -13,6 +15,8 @@ class Peran extends Controller
 
     public function create()
     {
+        $this->checkUserAccess();
+
         $data["judul"] = "Tambah Peran";
         $data["current_route"] = $this->currentRoute();
 
@@ -24,6 +28,8 @@ class Peran extends Controller
 
     public function store()
     {
+        $this->checkUserAccess();
+
         $errors = $this->request("PeranRequest")->validate($_POST);
 
         if (!empty($errors)) {
@@ -41,6 +47,8 @@ class Peran extends Controller
 
     public function edit($id)
     {
+        $this->checkUserAccess();
+
         $data["judul"] = "Ubah Peran";
 
         $data["peran"] = $this->model("PeranModel")->find($id);
@@ -54,6 +62,8 @@ class Peran extends Controller
 
     public function update()
     {
+        $this->checkUserAccess();
+
         $errors = $this->request("PeranRequest")->validate($_POST);
 
         if (!empty($errors)) {
@@ -71,6 +81,8 @@ class Peran extends Controller
 
     public function destroy($id)
     {
+        $this->checkUserAccess();
+
         if ($this->model("PeranModel")->destroy($id) > 0) {
             Flasher::setFlash("Data peran berhasil dihapus", "success");
         } else {
@@ -82,6 +94,8 @@ class Peran extends Controller
 
     public function search()
     {
+        $this->checkUserAccess();
+
         $data["judul"] = "Daftar Peran";
         $data["peran"] = $this->model("PeranModel")->search($_POST['keyword']);
         $data["current_route"] = $this->currentRoute();

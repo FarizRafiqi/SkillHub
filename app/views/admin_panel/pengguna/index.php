@@ -19,7 +19,12 @@
         <div class="flex justify-end mb-4 mr-4">
           <div class="row items-center">
             <label for="search" class="form-label col-4 col-md-3 m-0">Cari</label>
-            <input type="text" class="form-control col-8 col-md-9" id="search" placeholder="Masukkan kata pencarian...">
+            <input type="text"
+                   class="form-control col-8 col-md-9"
+                   id="search"
+                   placeholder="Masukkan kata pencarian..."
+                   data-url="<?= BASEURL; ?>/pengguna/search?>"
+            >
           </div>
         </div>
         <table class="table table-bordered table-striped table-hover">

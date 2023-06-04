@@ -4,13 +4,15 @@ class Autentikasi extends Controller
 {
     public function index()
     {
-        $data["judul"] = "Login";
+        $data = [
+            "judul" => "Login",
+            "current_route" => $this->currentRoute(),
+            "errors" => $_SESSION['errors'] ?? null,
+        ];
 
-        $data['current_route'] = $this->currentRoute();
-        $data['errors'] = $_SESSION['errors'] ?? null;
         unset($_SESSION['errors']);
 
-        $this->view("auth.login", $data, "templates.layout_customer");
+        $this->view("auth.login", $data, "templates.layout_autentikasi");
     }
 
     public function process()
@@ -25,7 +27,10 @@ class Autentikasi extends Controller
         }
 
         $result = $this->model("PenggunaModel")->findByEmail($_POST);
-        if (!$result) return;
+        if (!$result) {
+            Flasher::setFlash("Akun tidak terdaftar di sistem kami.", "danger");
+            back();
+        };
 
         $hashedPassword = $result['password'];
         $inputPassword = $_POST['password'];
@@ -38,7 +43,7 @@ class Autentikasi extends Controller
             $_SESSION['user'] = $result;
             if ($is_login >= 0) redirect("dashboard");
         } else {
-            Flasher::setFlash("Login gagal.", "danger");
+            Flasher::setFlash("Login gagal, periksa password Anda kembali.", "danger");
             back();
         }
     }
@@ -46,6 +51,6 @@ class Autentikasi extends Controller
     public function logout()
     {
         unset($_SESSION['user']);
-        redirect("autentikasi/index");
+        redirect("autentikasi");
     }
 }

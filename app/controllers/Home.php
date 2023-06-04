@@ -3,7 +3,10 @@
 class Home extends Controller{
     public function index(){
         $data['judul'] = "Home";
-        $data['pengguna'] = $this->model('PenggunaModel')->all();
-        $this->view('home.index', $data, "templates.layout_customer");
+
+        if(isset($_SESSION['user']))
+            $data['pengguna'] = $_SESSION['user'];
+
+        $this->view('customer.index', $data, "templates.layout_customer");
     }
 }
