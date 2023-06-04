@@ -9,7 +9,6 @@ class Pengguna extends Controller
         $data["judul"] = "Daftar Pengguna";
         $data["pengguna"] = $this->model("PenggunaModel")->all();
 
-        $data["current_route"] = $this->currentRoute();
         $this->view("admin_panel.pengguna.index", $data, "templates.layout_admin");
     }
 
@@ -19,7 +18,6 @@ class Pengguna extends Controller
 
         $data["judul"] = "Tambah Pengguna";
         $data["peran"] = $this->model("PeranModel")->all();
-        $data["current_route"] = $this->currentRoute();
 
         $data['errors'] = $_SESSION['errors'] ?? null;
         unset($_SESSION['errors']);
@@ -63,9 +61,7 @@ class Pengguna extends Controller
 
         $data["judul"] = "Ubah Pengguna";
         $data["peran"] = $this->model("PeranModel")->all();
-
         $data["pengguna"] = $this->model("PenggunaModel")->find($id);
-        $data["current_route"] = $this->currentRoute();
 
         $data['errors'] = $_SESSION['errors'] ?? null;
         unset($_SESSION['errors']);
@@ -121,7 +117,6 @@ class Pengguna extends Controller
 
         $data["judul"] = "Daftar Pengguna";
         $data["pengguna"] = $this->model("PenggunaModel")->search($_POST['keyword']);
-        $data["current_route"] = $this->currentRoute();
         $this->view("admin_panel.pengguna.index", $data, "templates.layout_admin");
     }
 }

@@ -9,7 +9,6 @@ class Kursus extends Controller
         $data["judul"] = "Daftar kursus";
         $data["kursus"] = $this->model("KursusModel")->all();
 
-        $data["current_route"] = $this->currentRoute();
         $this->view("admin_panel.kursus.index", $data, "templates.layout_admin");
     }
 
@@ -20,7 +19,6 @@ class Kursus extends Controller
         $data["judul"] = "Tambah Kursus";
         $data["kategori"] = $this->model("KategoriModel")->all();
         $data["pengguna"] = $this->model("PenggunaModel")->all();
-        $data["current_route"] = $this->currentRoute();
 
         $data['errors'] = $_SESSION['errors'] ?? null;
         unset($_SESSION['errors']);
@@ -64,7 +62,6 @@ class Kursus extends Controller
         $data["kategori"] = $this->model("KategoriModel")->all();
         $data["pengguna"] = $this->model("PenggunaModel")->all();
         $data["kursus"] = $this->model("KursusModel")->find($id);
-        $data["current_route"] = $this->currentRoute();
 
         $data['errors'] = $_SESSION['errors'] ?? null;
         unset($_SESSION['errors']);
@@ -110,7 +107,6 @@ class Kursus extends Controller
 
         $data["judul"] = "Daftar Kursus";
         $data["kursus"] = $this->model("KursusModel")->search($_POST['keyword']);
-        $data["current_route"] = $this->currentRoute();
         $this->view("admin_panel.kursus.index", $data, "templates.layout_admin");
     }
 }

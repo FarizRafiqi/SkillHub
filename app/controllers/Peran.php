@@ -9,7 +9,6 @@ class Peran extends Controller
         $data["judul"] = "Daftar Peran";
         $data["peran"] = $this->model("PeranModel")->all();
 
-        $data["current_route"] = $this->currentRoute();
         $this->view("admin_panel.peran.index", $data, "templates.layout_admin");
     }
 
@@ -18,7 +17,6 @@ class Peran extends Controller
         $this->checkUserAccess();
 
         $data["judul"] = "Tambah Peran";
-        $data["current_route"] = $this->currentRoute();
 
         $data['errors'] = $_SESSION['errors'] ?? null;
         unset($_SESSION['errors']);
@@ -52,7 +50,6 @@ class Peran extends Controller
         $data["judul"] = "Ubah Peran";
 
         $data["peran"] = $this->model("PeranModel")->find($id);
-        $data["current_route"] = $this->currentRoute();
 
         $data['errors'] = $_SESSION['errors'] ?? null;
         unset($_SESSION['errors']);
@@ -98,7 +95,6 @@ class Peran extends Controller
 
         $data["judul"] = "Daftar Peran";
         $data["peran"] = $this->model("PeranModel")->search($_POST['keyword']);
-        $data["current_route"] = $this->currentRoute();
         $this->view("admin_panel.peran.index", $data, "templates.layout_admin");
     }
 }
