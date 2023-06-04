@@ -34,8 +34,9 @@ $(function(){
 
     $("#search").on("keyup", function() {
         let keyword = $(this).val().toLowerCase();
+        const url = $(this).data("url");
         $.ajax({
-            url: "http://localhost/SkillHub/public/pengguna/search",
+            url: url,
             method: "POST",
             data: { keyword: keyword },
             success: function(response) {
