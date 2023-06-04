@@ -110,6 +110,10 @@ a {
     box-sizing: border-box;
 }
 
+.vh-100 {
+    height: 100vh;
+}
+
 .bg-primary {
     background-color: #a148d9 !important;
 }
@@ -140,7 +144,7 @@ a {
 
 /* Contoh warna tambahan */
 .bg-red-500 {
-    background-color: #F56565;
+    background-color: #F56565 !important;
 }
 
 .bg-blue-500 {
@@ -1743,4 +1747,28 @@ a {
 
 #login {
     margin-top: 10rem;
+}
+
+.error-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f8f9fa;
+}
+
+.error-content {
+    text-align: center;
+}
+
+.error-title {
+    font-size: 48px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #343a40;
+}
+
+.error-message {
+    font-size: 24px;
+    color: #343a40;
 }

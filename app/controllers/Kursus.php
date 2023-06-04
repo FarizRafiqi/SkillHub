@@ -4,6 +4,8 @@ class Kursus extends Controller
 {
     public function index()
     {
+        $this->checkUserAccess();
+
         $data["judul"] = "Daftar kursus";
         $data["kursus"] = $this->model("KursusModel")->all();
 
@@ -13,6 +15,8 @@ class Kursus extends Controller
 
     public function create()
     {
+        $this->checkUserAccess();
+
         $data["judul"] = "Tambah Kursus";
         $data["kategori"] = $this->model("KategoriModel")->all();
         $data["pengguna"] = $this->model("PenggunaModel")->all();
@@ -26,6 +30,8 @@ class Kursus extends Controller
 
     public function store()
     {
+        $this->checkUserAccess();
+
         $errors = $this->request("KursusRequest")->validate($_POST);
 
         if (!empty($errors)) {
@@ -43,6 +49,8 @@ class Kursus extends Controller
 
     public function show($id)
     {
+        $this->checkUserAccess();
+
         $data["judul"] = "Detail Kursus";
         $data["kursus"] = $this->model("KursusModel")->find($id);
         $this->view("admin_panel.kursus.show", $data, "templates.layout_admin");
@@ -50,6 +58,8 @@ class Kursus extends Controller
 
     public function edit($id)
     {
+        $this->checkUserAccess();
+
         $data["judul"] = "Ubah Kursus";
         $data["kategori"] = $this->model("KategoriModel")->all();
         $data["pengguna"] = $this->model("PenggunaModel")->all();
@@ -64,6 +74,8 @@ class Kursus extends Controller
 
     public function update()
     {
+        $this->checkUserAccess();
+
         $errors = $this->request("KursusRequest")->validate($_POST);
 
         if (!empty($errors)) {
@@ -81,6 +93,8 @@ class Kursus extends Controller
 
     public function destroy($id)
     {
+        $this->checkUserAccess();
+
         if ($this->model("KursusModel")->destroy($id) > 0) {
             Flasher::setFlash("Data kursus berhasil dihapus", "success");
         } else {
@@ -92,6 +106,8 @@ class Kursus extends Controller
 
     public function search()
     {
+        $this->checkUserAccess();
+
         $data["judul"] = "Daftar Kursus";
         $data["kursus"] = $this->model("KursusModel")->search($_POST['keyword']);
         $data["current_route"] = $this->currentRoute();

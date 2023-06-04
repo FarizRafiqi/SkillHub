@@ -40,7 +40,7 @@
                 <td><?= $row['nama_kategori']; ?></td>
                 <td><?= $row['nama_pengguna']; ?></td>
                 <td><?= $row['nama']; ?></td>
-                <td>Rp. <?= $row['harga']; ?></td>
+                <td>Rp. <?= formatNumber($row['harga']); ?></td>
                 <td>
                   <a href="<?= BASEURL; ?>/kursus/show/<?= $row['id']; ?>" class="btn btn-primary text-sm">Detail</a>
                   <a href="<?= BASEURL; ?>/kursus/edit/<?= $row['id']; ?>" class="btn btn-success text-sm">Ubah</a>

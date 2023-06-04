@@ -4,6 +4,8 @@ class Pengguna extends Controller
 {
     public function index()
     {
+        $this->checkUserAccess();
+
         $data["judul"] = "Daftar Pengguna";
         $data["pengguna"] = $this->model("PenggunaModel")->all();
 
@@ -13,6 +15,8 @@ class Pengguna extends Controller
 
     public function create()
     {
+        $this->checkUserAccess();
+
         $data["judul"] = "Tambah Pengguna";
         $data["peran"] = $this->model("PeranModel")->all();
         $data["current_route"] = $this->currentRoute();
@@ -25,6 +29,8 @@ class Pengguna extends Controller
 
     public function store()
     {
+        $this->checkUserAccess();
+
         $errors = $this->request("PenggunaRequest")->validate($_POST);
 
         if (!empty($errors)) {
@@ -44,6 +50,8 @@ class Pengguna extends Controller
 
     public function show($id)
     {
+        $this->checkUserAccess();
+
         $data["judul"] = "Detail Pengguna";
         $data["pengguna"] = $this->model("PenggunaModel")->find($id);
         $this->view("admin_panel.pengguna.show", $data, "templates.layout_admin");
@@ -51,6 +59,8 @@ class Pengguna extends Controller
 
     public function edit($id)
     {
+        $this->checkUserAccess();
+
         $data["judul"] = "Ubah Pengguna";
         $data["peran"] = $this->model("PeranModel")->all();
 
@@ -65,6 +75,8 @@ class Pengguna extends Controller
 
     public function update()
     {
+        $this->checkUserAccess();
+
         $errors = null;
 
         if (empty($_POST['password'])) {
@@ -92,6 +104,8 @@ class Pengguna extends Controller
 
     public function destroy($id)
     {
+        $this->checkUserAccess();
+
         if ($this->model("PenggunaModel")->destroy($id) > 0) {
             Flasher::setFlash("Data pengguna berhasil dihapus", "success");
         } else {
@@ -103,6 +117,8 @@ class Pengguna extends Controller
 
     public function search()
     {
+        $this->checkUserAccess();
+
         $data["judul"] = "Daftar Pengguna";
         $data["pengguna"] = $this->model("PenggunaModel")->search($_POST['keyword']);
         $data["current_route"] = $this->currentRoute();

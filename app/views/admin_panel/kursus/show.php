@@ -17,11 +17,11 @@
       </div>
       <div class="mb-3">
         <label for="total_jam_belajar" class="form-label font-bold">Total Jam Belajar</label>
-        <div><?= $kursus['total_jam_belajar']; ?> Jam</div>
+        <div><?= formatNumber($kursus['total_jam_belajar']); ?> Jam</div>
       </div>
       <div class="mb-3">
         <label for="harga" class="form-label font-bold">Harga</label>
-        <div>Rp. <?= $kursus['harga']; ?></div>
+        <div>Rp. <?= formatNumber($kursus['harga']); ?></div>
       </div>
       <div class="mb-3">
         <label for="rating" class="form-label font-bold">Rating</label>

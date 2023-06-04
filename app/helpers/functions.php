@@ -26,11 +26,17 @@ function isAlpha($str)
     return preg_match('/^[a-zA-Z\s]+$/', $str) === 1;
 }
 
-function abort_if($condition, $httpCode, $message = '')
+function abort_if($condition, $httpCode, $view)
 {
     if ($condition) {
         http_response_code($httpCode);
-        echo $message;
+        $controller = new Controller();
+        $controller->view($view);
         exit();
     }
+}
+
+function formatNumber($num): string
+{
+    return number_format($num, 0, ',', '.');
 }
