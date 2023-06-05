@@ -122,8 +122,10 @@ class PenggunaModel
     public function findByEmail($data)
     {
         $sql = <<<SQL
-            SELECT * FROM $this->table
-            WHERE email = :email
+            SELECT $this->table.*, peran.nama AS nama_peran 
+            FROM $this->table, peran
+            WHERE $this->table.id_peran = peran.id
+            AND email = :email
         SQL;
 
         $this->db->query($sql);
