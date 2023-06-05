@@ -17,7 +17,8 @@ class Pembayaran extends Controller
         $this->checkUserAccess();
 
         $data["judul"] = "Tambah Pembayaran";
-        $data["peran"] = $this->model("PeranModel")->all();
+        $data["pemesanan"] = $this->model("PemesananModel")->all();
+        $data["pengguna"] = $this->model("PenggunaModel")->all();
 
         $data['errors'] = $_SESSION['errors'] ?? null;
         unset($_SESSION['errors']);
@@ -37,8 +38,6 @@ class Pembayaran extends Controller
             $this->withErrors($errors);
             redirect("pembayaran/create");
         }
-
-        $_POST['password'] = password_hash($_POST['password'], PASSWORD_BCRYPT);
 
         if ($this->model("PembayaranModel")->create($_POST) > 0) {
             Flasher::setFlash("Data pembayaran berhasil ditambahkan", "success");

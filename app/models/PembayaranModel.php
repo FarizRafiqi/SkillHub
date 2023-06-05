@@ -12,8 +12,10 @@ class PembayaranModel
     public function all()
     {
         $sql = <<<SQL
-            SELECT tanggal, nominal 
-            FROM $this->table
+            SELECT $this->table.*, pengguna.nama AS nama_pengguna 
+            FROM $this->table, pengguna, pemesanan
+            WHERE $this->table.id_pengguna = pengguna.id
+            AND $this->table.id_pemesanan = pemesanan.id
         SQL;
 
         $this->db->query($sql);
@@ -37,13 +39,15 @@ class PembayaranModel
     {
         $query = <<<SQL
             INSERT INTO $this->table VALUES (
-                :tanggal, :nominal
+                '', :id_pengguna, :id_pemesanan, :nominal_bayar, :tanggal_bayar
             )
         SQL;
 
         $this->db->query($query);
-        $this->db->bind('tanggal', $data['tanggal']);
-        $this->db->bind('nominal', $data['nominal']);
+        $this->db->bind('id_pengguna', $data['id_pengguna']);
+        $this->db->bind('id_pemesanan', $data['id_pemesanan']);
+        $this->db->bind('nominal_bayar', $data['nominal_bayar']);
+        $this->db->bind('tanggal_bayar', $data['tanggal_bayar']);
 
         $this->db->execute();
 
@@ -106,4 +110,3 @@ class PembayaranModel
         return $this->db->single();
     }
 }
-
