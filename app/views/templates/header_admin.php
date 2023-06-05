@@ -14,7 +14,7 @@
     </a>
   </div>
   <div class="navbar-menu">
-    <a href="#" class="navbar-menu-item">
+    <a href="<?= BASEURL; ?>/profil/index" class="navbar-menu-item">
       <div class="avatar">
         <img src="<?= BASEURL; ?>/img/avatar-default.png" alt="Avatar" class="avatar-image">
       </div>
