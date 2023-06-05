@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 26, 2023 at 03:39 AM
+-- Generation Time: Jun 05, 2023 at 03:11 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -33,6 +33,17 @@ CREATE TABLE `detail_kursus` (
   `nama_video` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `detail_kursus`
+--
+
+INSERT INTO `detail_kursus` (`id`, `id_kursus`, `nama_video`) VALUES
+(1, 1, 'video_web_dev_1'),
+(2, 1, 'video_web_dev_2'),
+(3, 1, 'video_web_dev_3'),
+(4, 5, 'python_django_1'),
+(5, 5, 'python_django_2');
+
 -- --------------------------------------------------------
 
 --
@@ -43,6 +54,17 @@ CREATE TABLE `kategori` (
   `id` int(11) NOT NULL,
   `nama` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `kategori`
+--
+
+INSERT INTO `kategori` (`id`, `nama`) VALUES
+(1, 'Web Programming'),
+(2, 'IT & Perangkat Lunak'),
+(3, 'Finansial & Akuntansi'),
+(4, 'Game Development'),
+(5, 'Mobile Development');
 
 -- --------------------------------------------------------
 
@@ -61,6 +83,17 @@ CREATE TABLE `kursus` (
   `deskripsi` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `kursus`
+--
+
+INSERT INTO `kursus` (`id`, `id_kategori`, `id_pengguna`, `nama`, `total_jam_belajar`, `harga`, `rating`, `deskripsi`) VALUES
+(1, 1, 1, 'The Web Developer Bootcamp 2023', '1000', '125000', '5.0', '10 Hours of React just added. Become a Developer With ONE course - HTML, CSS, JavaScript, React, Node, MongoDB and More!'),
+(2, 1, 1, 'The Complete 2023 Web Development Bootcamp', '2500', '250000', '5.0', 'Become a Full-Stack Web Developer with just ONE course. HTML, CSS, Javascript, Node, React, MongoDB, Web3 and DApps'),
+(3, 1, 3, 'The Complete Web Developer Course 3.0', '50', '100000', '5.0', 'Learn Web Development in 2023'),
+(4, 2, 2, 'Vue - The Complete Guide (incl. Router & Composition API)', '20', '250000', '4.0', 'Vue.js is an awesome JavaScript Framework for building Frontend Applications! VueJS mixes the Best of Angular + React!'),
+(5, 1, 9, 'Python and Django Full Stack Web Developer Bootcamp', '30', '549000', '4.0', 'Learn to build web with HTML, CSS, Bootstrap, JS, JQuery, Python 3, and Django.');
+
 -- --------------------------------------------------------
 
 --
@@ -74,6 +107,17 @@ CREATE TABLE `pembayaran` (
   `nominal_bayar` decimal(10,0) NOT NULL,
   `tanggal_bayar` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `pembayaran`
+--
+
+INSERT INTO `pembayaran` (`id`, `id_pengguna`, `id_pemesanan`, `nominal_bayar`, `tanggal_bayar`) VALUES
+(1, 2, 1, '200000', '2023-06-05'),
+(2, 1, 1, '250000', '2023-06-05'),
+(3, 2, 4, '100000', '2023-06-05'),
+(4, 10, 4, '250000', '2023-06-05'),
+(5, 1, 2, '250000', '2023-06-04');
 
 -- --------------------------------------------------------
 
@@ -89,6 +133,17 @@ CREATE TABLE `pemesanan` (
   `tanggal_pesan` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `pemesanan`
+--
+
+INSERT INTO `pemesanan` (`id`, `id_pengguna`, `id_kursus`, `total_harga`, `tanggal_pesan`) VALUES
+(1, 1, 2, '250000', '2023-06-05'),
+(2, 1, 2, '250000', '2023-06-05'),
+(3, 1, 2, '250000', '2023-06-05'),
+(4, 2, 3, '100000', '2023-06-05'),
+(5, 10, 4, '250000', '0000-00-00');
+
 -- --------------------------------------------------------
 
 --
@@ -100,8 +155,25 @@ CREATE TABLE `pengguna` (
   `id_peran` int(11) DEFAULT NULL,
   `nama` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `password` varchar(255) NOT NULL
+  `password` varchar(255) NOT NULL,
+  `is_login` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `pengguna`
+--
+
+INSERT INTO `pengguna` (`id`, `id_peran`, `nama`, `email`, `password`, `is_login`) VALUES
+(1, 1, 'Aulia El Ihza Fariz Rafiqi', 'auliaelihza@gmail.com', '$2y$10$uo/RKYDRAe5BmpmykvL2Sun7MQ3uRQ2dPZxi/4ST8hLjgRmgGwb2.', 0),
+(2, 2, 'Bobby Rafael Sembiring', 'bobby@gmail.com', '$2y$10$uo/RKYDRAe5BmpmykvL2Sun7MQ3uRQ2dPZxi/4ST8hLjgRmgGwb2.', 0),
+(3, 2, 'Affandra Fahrezi', 'affandra@gmail.com', '$2y$10$uo/RKYDRAe5BmpmykvL2Sun7MQ3uRQ2dPZxi/4ST8hLjgRmgGwb2.', 0),
+(4, 3, 'Bayu', 'bayu@gmail.com', '$2y$10$uo/RKYDRAe5BmpmykvL2Sun7MQ3uRQ2dPZxi/4ST8hLjgRmgGwb2.', 0),
+(5, 3, 'Danu Julnizar', 'danujulnizar@gmail.com', '$2y$10$uo/RKYDRAe5BmpmykvL2Sun7MQ3uRQ2dPZxi/4ST8hLjgRmgGwb2.', 0),
+(6, 3, 'Mario Teguh', 'marioteguh@gmail.com', '$2y$10$uo/RKYDRAe5BmpmykvL2Sun7MQ3uRQ2dPZxi/4ST8hLjgRmgGwb2.', 0),
+(7, 3, 'Amicia', 'amicia@gmail.com', '$2y$10$uo/RKYDRAe5BmpmykvL2Sun7MQ3uRQ2dPZxi/4ST8hLjgRmgGwb2.', 0),
+(8, 3, 'Hugo', 'hugo@gmail.com', '$2y$10$uo/RKYDRAe5BmpmykvL2Sun7MQ3uRQ2dPZxi/4ST8hLjgRmgGwb2.', 0),
+(9, 3, 'Ruslan Jamin', 'ruslanjamin@gmail.com', '$2y$10$uo/RKYDRAe5BmpmykvL2Sun7MQ3uRQ2dPZxi/4ST8hLjgRmgGwb2.', 0),
+(10, 3, 'Yusuf Muffarij', 'yusufmuffarij@gmail.com', '$2y$10$uo/RKYDRAe5BmpmykvL2Sun7MQ3uRQ2dPZxi/4ST8hLjgRmgGwb2.', 0);
 
 -- --------------------------------------------------------
 
@@ -119,7 +191,9 @@ CREATE TABLE `peran` (
 --
 
 INSERT INTO `peran` (`id`, `nama`) VALUES
-(1, 'admin');
+(1, 'admin'),
+(2, 'staff'),
+(3, 'customer');
 
 --
 -- Indexes for dumped tables
@@ -183,43 +257,43 @@ ALTER TABLE `peran`
 -- AUTO_INCREMENT for table `detail_kursus`
 --
 ALTER TABLE `detail_kursus`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `kategori`
 --
 ALTER TABLE `kategori`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `kursus`
 --
 ALTER TABLE `kursus`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `pembayaran`
 --
 ALTER TABLE `pembayaran`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `pemesanan`
 --
 ALTER TABLE `pemesanan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `pengguna`
 --
 ALTER TABLE `pengguna`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
 
 --
 -- AUTO_INCREMENT for table `peran`
 --
 ALTER TABLE `peran`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Constraints for dumped tables
