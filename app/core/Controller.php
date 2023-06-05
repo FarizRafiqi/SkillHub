@@ -84,7 +84,7 @@ class Controller
         // Jika perannya admin maka return false
 
         $pengguna = $this->model("PenggunaModel")->find($_SESSION['user']['id']);
-        $isNotAllowed = ($pengguna['is_login'] != 1) && ($pengguna['id_peran'] != 1);
+        $isNotAllowed = ($pengguna['is_login'] == 1) && ($pengguna['id_peran'] != 1);
         abort_if($isNotAllowed, 403, 'errors.403');
     }
 }
