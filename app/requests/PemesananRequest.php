@@ -4,7 +4,6 @@ class PemesananRequest
 {
     public function validate($data): array
     {
-        $id = $data["id"];
         $id_pengguna = $data["id_pengguna"];
         $id_kursus = $data["id_kursus"];
         $total_harga = $data["total_harga"];
@@ -13,20 +12,20 @@ class PemesananRequest
         $errors = [];
 
         // rule required
-        if (empty($id))
-            $errors["id"] = "ID tidak boleh kosong.";
-
         if (empty($id_pengguna))
-            $errors["id_pengguna"] = "ID pengguna tidak boleh kosong.";
+            $errors["id_pengguna"] = "Pengguna tidak boleh kosong.";
 
         if (empty($id_kursus))
-            $errors["id_kursus"] = "ID kursus tidak boleh kosong.";
+            $errors["id_kursus"] = "Kursus tidak boleh kosong.";
 
-        if(!isset($data["total_harga"]))
+        if(empty($total_harga))
             $errors["total_harga"] = "Total harga tidak boleh kosong.";
 
-        if(!isset($data["tanggal_pesan"]))
+        if(empty($tanggal_pesan))
             $errors["tanggal_pesan"] = "Tanggal pesan tidak boleh kosong.";
+
+        if(!empty($total_harga) && $total_harga < 0)
+            $errors["total_harga"] = "Total harga tidak boleh minus";
 
         return $errors;
     }

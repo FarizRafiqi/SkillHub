@@ -44,7 +44,7 @@
                 <td>
                   <a href="<?= BASEURL; ?>/kursus/show/<?= $row['id']; ?>" class="btn btn-primary text-sm">Detail</a>
                   <a href="<?= BASEURL; ?>/kursus/edit/<?= $row['id']; ?>" class="btn btn-success text-sm">Ubah</a>
-                  <a href="<?= BASEURL; ?>/kursus/destroy/<?= $row['id']; ?>" class="btn btn-danger btn-hapus" data-id="<?= $row['id']; ?>">Hapus</a>
+                  <a href="<?= BASEURL; ?>/kursus/destroy/<?= $row['id']; ?>" class="btn btn-danger btn-hapus text-sm" data-id="<?= $row['id']; ?>">Hapus</a>
                 </td>
               </tr>
             <?php endforeach; ?>

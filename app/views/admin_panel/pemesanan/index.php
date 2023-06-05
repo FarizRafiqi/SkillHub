@@ -26,24 +26,24 @@
           <thead>
             <tr class="text-center">
               <th>ID</th>
-              <th>ID Pengguna</th>
-              <th>ID Kursus</th>
+              <th>Nama Pemesan</th>
+              <th>Nama Kursus</th>
               <th>Total Harga</th>
               <th>Tanggal Pesan</th>
+              <th>Aksi</th>
             </tr>
           </thead>
           <tbody>
             <?php foreach($pemesanan as $row): ?>
               <tr>
                 <td><?= $row['id']; ?></td>
-                <td><?= $row['id_pengguna']; ?></td>
-                <td><?= $row['id_kursus']; ?></td>
+                <td><?= $row['nama_pengguna']; ?></td>
+                <td><?= $row['nama_kursus']; ?></td>
                 <td><?= $row['total_harga']; ?></td>
                 <td><?= $row['tanggal_pesan']; ?></td>
                 <td>
-                  <a href="<?= BASEURL;?>/pemesanan/show/<?= $row['id']; ?>" class="btn btn-primary text-sm">Detail</a>
                   <a href="<?= BASEURL;?>/pemesanan/edit/<?= $row['id']; ?>" class="btn btn-success text-sm">Ubah</a>
-                  <a href="<?= BASEURL;?>/pemesanan/destroy/<?= $row['id']; ?>" class="btn btn-danger btn-hapus" data-id="<?= $row['id']; ?>">Hapus</a>
+                  <a href="<?= BASEURL;?>/pemesanan/destroy/<?= $row['id']; ?>" class="btn btn-danger text-sm btn-hapus" data-id="<?= $row['id']; ?>">Hapus</a>
                 </td>
               </tr>
             <?php endforeach;?>

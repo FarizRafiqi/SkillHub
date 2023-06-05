@@ -7,15 +7,14 @@ class Pemesanan extends Controller
         $data["judul"] = "Daftar Pemesanan";
         $data["pemesanan"] = $this->model("PemesananModel")->all();
 
-        $data["current_route"] = $this->currentRoute();
         $this->view("admin_panel.pemesanan.index", $data, "templates.layout_admin");
     }
 
     public function create()
     {
         $data["judul"] = "Tambah Pemesanan";
-        $data["current_route"] = $this->currentRoute();
-
+        $data["pengguna"] = $this->model("PenggunaModel")->all();
+        $data["kursus"] = $this->model("KursusModel")->all();
         $data['errors'] = $_SESSION['errors'] ?? null;
         unset($_SESSION['errors']);
 
@@ -50,12 +49,11 @@ class Pemesanan extends Controller
 
     public function edit($id)
     {
-        $data["judul"] = "Ubah Pengguna";
-        $data["peran"] = $this->model("PeranModel")->all();
+        $data["judul"] = "Ubah Pemesanan";
+        $data["pengguna"] = $this->model("PenggunaModel")->all();
+        $data["kursus"] = $this->model("KursusModel")->all();
 
-        $data["pengguna"] = $this->model("PenggunaModel")->find($id);
         $data["pemesanan"] = $this->model("PemesananModel")->find($id);
-        $data["current_route"] = $this->currentRoute();
 
         $data['errors'] = $_SESSION['errors'] ?? null;
         unset($_SESSION['errors']);
@@ -94,8 +92,7 @@ class Pemesanan extends Controller
     public function search()
     {
         $data["judul"] = "Daftar Pemesanan";
-        $data["pengguna"] = $this->model("PemesananModel")->search($_POST['keyword']);
-        $data["current_route"] = $this->currentRoute();
+        $data["pemesanan"] = $this->model("PemesananModel")->search($_POST['keyword']);
         $this->view("admin_panel.pemesanan.index", $data, "templates.layout_admin");
     }
 }

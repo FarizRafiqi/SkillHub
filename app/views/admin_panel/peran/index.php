@@ -37,7 +37,7 @@
                 <td><?= $row['nama']; ?></td>
                 <td>
                   <a href="<?= BASEURL; ?>/peran/edit/<?= $row['id']; ?>" class="btn btn-success text-sm">Ubah</a>
-                  <a href="<?= BASEURL; ?>/peran/destroy/<?= $row['id']; ?>" class="btn btn-danger btn-hapus" data-id="<?= $row['id']; ?>">Hapus</a>
+                  <a href="<?= BASEURL; ?>/peran/destroy/<?= $row['id']; ?>" class="btn btn-danger btn-hapus text-sm" data-id="<?= $row['id']; ?>">Hapus</a>
                 </td>
               </tr>
             <?php endforeach; ?>
