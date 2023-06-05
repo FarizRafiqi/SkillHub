@@ -92,11 +92,11 @@ class PemesananModel
     public function search($keyword)
     {
         $query = <<<SQL
-            SELECT $this->table.*, pengguna.nama AS nama_pengguna, kursus.nama AS nama_kursus 
-            FROM $this->table, pengguna, kursus
-            WHERE $this->table.id_pengguna = pengguna.id
-            AND $this->table.id_kursus = kursus.id
-            AND $this->table.id = :keyword
+            SELECT p.*, pengguna.nama AS nama_pengguna, kursus.nama AS nama_kursus 
+            FROM $this->table AS p, pengguna, kursus
+            WHERE p.id_pengguna = pengguna.id
+            AND p.id_kursus = kursus.id
+            AND p.id LIKE :keyword
         SQL;
 
         $this->db->query($query);
