@@ -39,9 +39,9 @@
                 <td><?= $row['id']; ?></td>
                 <td><?= $row['nama_pengguna']; ?></td>
                 <td><?= $row['nama_kursus']; ?></td>
-                <td><?= $row['total_harga']; ?></td>
-                <td><?= $row['tanggal_pesan']; ?></td>
-                <td>
+                <td>Rp. <?= formatNumber($row['total_harga']); ?></td>
+                <td><?= date('d-m-Y', strtotime($row['tanggal_pesan'])); ?></td>
+                <td class="text-center">
                   <a href="<?= BASEURL;?>/pemesanan/edit/<?= $row['id']; ?>" class="btn btn-success text-sm">Ubah</a>
                   <a href="<?= BASEURL;?>/pemesanan/destroy/<?= $row['id']; ?>" class="btn btn-danger text-sm btn-hapus" data-id="<?= $row['id']; ?>">Hapus</a>
                 </td>

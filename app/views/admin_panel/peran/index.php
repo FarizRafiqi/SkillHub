@@ -35,7 +35,7 @@
               <tr>
                 <td><?= $row['id']; ?></td>
                 <td><?= $row['nama']; ?></td>
-                <td>
+                <td class="text-center">
                   <a href="<?= BASEURL; ?>/peran/edit/<?= $row['id']; ?>" class="btn btn-success text-sm">Ubah</a>
                   <a href="<?= BASEURL; ?>/peran/destroy/<?= $row['id']; ?>" class="btn btn-danger btn-hapus text-sm" data-id="<?= $row['id']; ?>">Hapus</a>
                 </td>

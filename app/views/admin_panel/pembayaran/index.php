@@ -38,7 +38,7 @@
                 <td><?= $row['id']; ?></td>
                 <td><?= $row['id_pemesanan']; ?></td>
                 <td><?= $row['nama_pengguna']; ?></td>
-                <td><?= $row['tanggal_bayar']; ?></td>
+                <td><?= date('d-m-Y', strtotime($row['tanggal_bayar'])); ?></td>
                 <td>Rp. <?= formatNumber($row['nominal_bayar']); ?></td>
               </tr>
             <?php endforeach;?>
