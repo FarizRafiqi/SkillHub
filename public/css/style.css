@@ -1772,3 +1772,61 @@ a {
     font-size: 24px;
     color: #343a40;
 }
+
+header {
+    border-bottom: 1px solid black;
+}
+
+.main-content {
+    padding: 20px;
+    border: 1px solid black;
+    border-top: none;
+}
+
+.profile {
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile img {
+    width: 135px;
+    height: 135px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.profile-image {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-image img {
+    object-fit: cover;
+}
+
+.edit-profile {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.edit-profile i {
+    width: 20px;
+    height: 20px;
+}
