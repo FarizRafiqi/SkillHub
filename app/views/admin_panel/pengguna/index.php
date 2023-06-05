@@ -44,7 +44,7 @@
                 <td><?= $row['nama_peran']; ?></td>
                 <td><?= $row['nama']; ?></td>
                 <td><?= $row['email']; ?></td>
-                <td>
+                <td class="text-center">
                   <a href="<?= BASEURL;?>/pengguna/show/<?= $row['id']; ?>" class="btn btn-primary text-sm">Detail</a>
                   <a href="<?= BASEURL;?>/pengguna/edit/<?= $row['id']; ?>" class="btn btn-success text-sm">Ubah</a>
                   <a href="<?= BASEURL;?>/pengguna/destroy/<?= $row['id']; ?>" class="btn btn-danger text-sm btn-hapus" data-id="<?= $row['id']; ?>">Hapus</a>

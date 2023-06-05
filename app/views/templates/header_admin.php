@@ -14,6 +14,7 @@
     </a>
   </div>
   <div class="navbar-menu">
+    <span class="text-sm font-normal"><?= $_SESSION['user']['nama'];?></span>
     <a href="<?= BASEURL; ?>/profil/index" class="navbar-menu-item">
       <div class="avatar">
         <img src="<?= BASEURL; ?>/img/avatar-default.png" alt="Avatar" class="avatar-image">

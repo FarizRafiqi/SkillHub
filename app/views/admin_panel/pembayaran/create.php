@@ -1,4 +1,4 @@
-<h2>Tabel Pembayaran</h2>
+<h2>Tambah Pembayaran</h2>
 <div class="container container-sm form-crud">
     <div class="card">
         <div class="card-body">
