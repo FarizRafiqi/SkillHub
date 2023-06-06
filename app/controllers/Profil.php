@@ -3,6 +3,7 @@
 class Profil extends Controller{
     public function index(){
         $this->checkUserAccess();
+
         $data['judul'] = "Profil";
 
         if(isset($_SESSION['user']))

@@ -4,6 +4,8 @@ class Pemesanan extends Controller
 {
     public function index()
     {
+        $this->checkUserAccess();
+
         $data["judul"] = "Daftar Pemesanan";
         $data["pemesanan"] = $this->model("PemesananModel")->all();
 
@@ -12,9 +14,12 @@ class Pemesanan extends Controller
 
     public function create()
     {
+        $this->checkUserAccess();
+
         $data["judul"] = "Tambah Pemesanan";
         $data["pengguna"] = $this->model("PenggunaModel")->all();
         $data["kursus"] = $this->model("KursusModel")->all();
+
         $data['errors'] = $_SESSION['errors'] ?? null;
         unset($_SESSION['errors']);
 
@@ -23,6 +28,8 @@ class Pemesanan extends Controller
 
     public function store()
     {
+        $this->checkUserAccess();
+
         $errors = $this->request("PemesananRequest")->validate($_POST);
 
         if (!empty($errors)) {
@@ -38,17 +45,10 @@ class Pemesanan extends Controller
         }
     }
 
-    public function show($id)
-    {
-        $data["judul"] = "Detail Pengguna";
-        $data["pengguna"] = $this->model("PenggunaModel")->find($id);
-        $this->view("admin_panel.pengguna.show", $data, "templates.layout_admin");
-        $data["pemesanan"] = $this->model("PemesananModel")->find($id);
-        $this->view("admin_panel.pemesanan.show", $data, "templates.layout_admin");
-    }
-
     public function edit($id)
     {
+        $this->checkUserAccess();
+
         $data["judul"] = "Ubah Pemesanan";
         $data["pengguna"] = $this->model("PenggunaModel")->all();
         $data["kursus"] = $this->model("KursusModel")->all();
@@ -63,6 +63,8 @@ class Pemesanan extends Controller
 
     public function update()
     {
+        $this->checkUserAccess();
+
         $errors = $this->request("PemesananRequest")->validate($_POST);
 
         if (!empty($errors)) {
@@ -80,6 +82,8 @@ class Pemesanan extends Controller
 
     public function destroy($id)
     {
+        $this->checkUserAccess();
+
         if ($this->model("PemesananModel")->destroy($id) > 0) {
             Flasher::setFlash("Data pemesanan berhasil dihapus", "success");
         } else {
@@ -91,6 +95,8 @@ class Pemesanan extends Controller
 
     public function search()
     {
+        $this->checkUserAccess();
+
         $data["judul"] = "Daftar Pemesanan";
         $data["pemesanan"] = $this->model("PemesananModel")->search($_POST['keyword']);
         $this->view("admin_panel.pemesanan.index", $data, "templates.layout_admin");

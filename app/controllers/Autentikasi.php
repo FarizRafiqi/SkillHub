@@ -49,6 +49,11 @@ class Autentikasi extends Controller
 
     public function logout()
     {
+        $pengguna = $_SESSION['user'];
+        $pengguna['is_login'] = false;
+
+        $this->model("PenggunaModel")->update($pengguna);
+
         unset($_SESSION['user']);
         redirect("autentikasi");
     }
