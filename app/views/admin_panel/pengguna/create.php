@@ -6,7 +6,11 @@
       <form action="<?= BASEURL; ?>/pengguna/store" method="POST">
         <div class="mb-3">
           <label for="nama" class="form-label">Nama</label>
-          <input type="text" class="form-control" name="nama" id="nama" placeholder="Masukkan nama">
+          <input type="text" 
+                 class="form-control" 
+                 name="nama" 
+                 id="nama" 
+                 placeholder="Masukkan nama">
             <?php if (isset($errors) && isset($errors["nama"])) : ?>
               <div class="text-red-500 my-2 text-sm error-message">
                   <?= $errors["nama"]; ?>
@@ -15,7 +19,11 @@
         </div>
         <div class="mb-3">
           <label for="email" class="form-label">Email</label>
-          <input type="email" class="form-control" name="email" id="email" placeholder="user@example.com">
+          <input type="email" 
+                 class="form-control" 
+                 name="email" 
+                 id="email" 
+                 placeholder="user@example.com">
             <?php if (isset($errors) && isset($errors["email"])) : ?>
               <div class="text-red-500 my-2 text-sm error-message">
                   <?= $errors["email"]; ?>
@@ -24,7 +32,11 @@
         </div>
         <div class="mb-3">
           <label for="password" class="form-label">Password</label>
-          <input type="password" class="form-control" name="password" id="password" placeholder="Masukkan password">
+          <input type="password" 
+                 class="form-control" 
+                 name="password" 
+                 id="password" 
+                 placeholder="Masukkan password">
             <?php if (isset($errors) && isset($errors["password"])) : ?>
               <div class="text-red-500 my-2 text-sm error-message">
                   <?= $errors["password"]; ?>
@@ -33,7 +45,8 @@
         </div>
         <div class="mb-3">
           <label for="selectPeran" class="form-label">Peran</label>
-          <select class="form-control" id="selectPeran" name="id_peran">
+          <select class="form-control" id="selectPeran" 
+                 name="id_peran">
             <option value="" selected disabled>Pilih Peran</option>
               <?php foreach ($peran as $row): ?>
                   <?php if ($row['id'] !== 1) : ?>
@@ -49,7 +62,11 @@
         </div>
 
         <div class="text-right">
-          <a class="btn btn-outline btn-outline-secondary text-sm" href="<?= BASEURL; ?>/pengguna/index">Batal</a>
+          <a class="btn btn-outline btn-outline-secondary text-sm" 
+             href="<?= BASEURL; ?>/pengguna/index"
+          >
+            Batal
+          </a>
           <button class="btn btn-primary text-sm">Kirim</button>
         </div>
       </form>

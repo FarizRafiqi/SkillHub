@@ -72,7 +72,11 @@
         </div>
 
         <div class="text-right">
-          <a class="btn btn-outline btn-outline-secondary text-sm" href="<?= BASEURL; ?>/pengguna/index">Batal</a>
+          <a class="btn btn-outline btn-outline-secondary text-sm" 
+             href="<?= BASEURL; ?>/pengguna/index"
+          >
+            Batal
+          </a>
           <button class="btn btn-primary text-sm">Kirim</button>
         </div>
       </form>

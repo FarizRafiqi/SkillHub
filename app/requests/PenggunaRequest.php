@@ -2,7 +2,7 @@
 
 class PenggunaRequest
 {
-    public function validate($data): array
+    public function validate($data, $isIgnore = false): array
     {
         $nama = $data["nama"];
         $email = $data["email"];
@@ -17,7 +17,7 @@ class PenggunaRequest
         if (empty($email))
             $errors["email"] = "Email tidak boleh kosong.";
 
-        if (empty($password))
+        if (empty($password) && $isIgnore)
             $errors["password"] = "Password tidak boleh kosong.";
 
         if(!isset($data["id_peran"]))

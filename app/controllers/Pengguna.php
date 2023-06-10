@@ -73,13 +73,11 @@ class Pengguna extends Controller
     {
         $this->checkUserAccess();
 
-        $errors = null;
-
         if (empty($_POST['password'])) {
             unset($_POST['password']);
-        } else {
-            $errors = $this->request("PenggunaRequest")->validate($_POST);
         }
+
+        $errors = $this->request("PenggunaRequest")->validate($_POST);
 
         if (!empty($errors)) {
             Flasher::setFlash("Data pengguna gagal diubah.", "danger");

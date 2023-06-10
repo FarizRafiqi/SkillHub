@@ -27,7 +27,7 @@
             <tr class="text-center">
               <th>ID</th>
               <th>Nama Kategori</th>
-              <th>Nama Pengguna</th>
+              <th>Nama Pembuat</th>
               <th>Nama Kursus</th>
               <th>Harga</th>
               <th>Aksi</th>
